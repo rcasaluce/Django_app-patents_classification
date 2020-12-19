@@ -1,0 +1,48 @@
+{% extends 'binary_classification/base.html' %}
+
+
+{% block head %}
+<h1>Machine learning model</h1>
+
+
+{% endblock %}
+<ul>
+  <li><a  class="active" href="/">Home</a></li>
+</ul>
+
+{% block body %}
+
+<div class="row">
+  <div class="column" style="background-color:#f9f9f9;">
+<fieldset>
+<legend><b style="font-size:20px">How the model was trained</b></legend>
+		<p align="justify"><font face=”Geneva”>The machine learning model was trained with around 400 patents with a total of around 7000 claims manually labelled from both EPO and USPTO offices. To train, validate and test the model, the
+		data was split<sup><i>1</i></sup> respectively, 50% for training, 25% for validating and 25% for testing. Only on the training data, to compesate of the imbalance classes, an oversampling method was applied. 
+		Both the TF-IDF vectorizer and the XGBOOST algorithm have been tuned using the validation data.</font></p>
+		<p style = "color:grey;"><sup><i>1</i></sup><i>the data was stratified by patents, to avoid having in test dataset claims from a patent that also have claims either in the train or validation sets.</i></p>
+</fieldset>
+	</div>
+<br>
+<div class="column" style="background-color:#f9f9f9";>
+<fieldset>
+<legend><b style="font-size:20px">Patents used for the ML model</b></legend>
+	<p><font face=”Geneva”>Only patents from four technologies were used to train the model.
+	Flywheels (CPC<sup><i>2</i></sup> Y02T 10/7033	and Y02E 60/13) , Supercapacitor (CPC Y02T 10/7027), Lead Acid Batteries (CPC Y02T 10/7016 and Y02E 60/16) and Lithium-in Batteries (CPC Y02E 60/122 and Y02T 10/7011)</font></p>
+	<p style = "color:grey;"><i><sup>2</sup><a href="https://www.epo.org/searching-for-patents/helpful-resources/first-time-here/classification/cpc.html">https://www.epo.org/searching-for-patents/helpful-resources/first-time-here/classification/cpc.html</a></i></p>
+</fieldset>
+</div>
+</div>
+<div class="row">
+  <div class="column" style="background-color:#f9f9f9;">
+<fieldset>
+<legend><b style="font-size:20px">Evaluation metrics on test data</b></legend>
+		<table >
+			<thead><tr><th>Precision</th><th>Recall</th><th>Specificity</th><th>F1-Score</th><th>Accuracy</th><th>Balance Accuracy</th><th>AUC</th></tr></thead>
+			<tbody>
+				<tr><td>0.9736</td><td>0.9924</td><td>0.9179</td><td>0.9829</td><td>0.9740</td><td>0.9552</td><td>0.9552</td></tr>
+			</tbody>
+		</table>
+</fieldset>
+</div>
+</div>
+{% endblock %}

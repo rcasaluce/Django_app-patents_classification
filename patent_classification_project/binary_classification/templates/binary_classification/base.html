@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+  
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #363636;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #52c356;
+}
+
+
+footer {
+  background-color: f9f9f9;
+  padding: 5px;
+  text-align: left;
+  color: 363636;
+}
+
+body {
+	background-color: #f9f9f9;
+	padding: 5px;
+	}
+	
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	}
+	th, td {
+	padding: 15px;
+	background-color: #f9f9e1;
+	}
+
+#myHeader {
+  background-color: #52c356;
+  color: #f9f9f9;
+  padding: 10px;
+  text-align: center;
+}
+
+fieldset_new {
+  display: block;
+  margin-left: 10px;
+  margin-right: 10px;
+}  
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a  class="active" href="/"><b>Home</b></a></li>
+  <li style="float"><a class="active" href="/info"><b>About ML</b></a></li>
+</ul>
+	<meta charset="UFT-8">
+	<meta name="viewport" content="width=device=width, initial-scale=1.0">
+	
+	{% block head %} {% endblock %}
+
+</head>
+<body>
+
+	{% block body %} {% endblock %}
+	<br>
+	<br>
+	<br>
+
+	<footer>
+  <hr>
+  <p style = "color:grey;"><i>This is a non-commercial app. Any copy rights of the patents remain with the patent offices that   
+  <br>have published them and their inventors.</i>
+  <br>@created by Roberto Casaluce 2020
+  <br>rcasaluce@yahoo.co.uk
+  <br/>Github rep: <a style = "color: black"; href="https://github.com/rcasaluce/code_final_project">https://github.com/rcasaluce/</a></p>
+ </footer>
+
+</body>
+
+	
+</html>

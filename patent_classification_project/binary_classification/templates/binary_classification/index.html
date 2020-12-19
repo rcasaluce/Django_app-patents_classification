@@ -1,0 +1,80 @@
+{% extends 'binary_classification/base.html' %}
+<ul>
+  <li><a  class="active" href="">Home</a></li>
+  <li style="float"><a class="active" href="/info">About ML</a></li>
+</ul>
+
+{% block head %}
+
+
+<h2 id="myHeader">A Machine Learnig base app to classify Patents
+<br> in Product or Process patents</h2>
+	
+
+{% endblock %}
+
+{% block body %}
+<div class="row">
+  <div class="column" style="background-color:#f9f9f9;">
+<form action="" method="POST">{% csrf_token %}
+    <fieldset>
+        <legend><b style="font-size:20px">Input values:</b></legend>
+		<p style="font-size:20px"><b>Predict patents from both <a href="https://www.epo.org/">EPO</a> and <a href="https://www.uspto.gov/">USPTO</a> offices</b></p> 
+
+		<p>Please enter the publication number of the patent and press the Submit button.</p>
+		
+			Publication Number:
+			<input name="Publn_nr" type="float" value="" required>
+		
+		<button>Submit</button>
+		<p style = "color:grey;"><font face=”Geneva”><i># for the EPO patents type EP follow by the publication number without spaces followed by the publication kind - B1, B2 etc. For example, type in 'EP1000345B1'
+		<br/># for the USPTO type US prior the publication number. For example, type in 'US7531978' (here there is no need to add the publication kind)</i></font></p>
+     	 
+	</fieldset>
+	 </div>
+	<br>
+
+	<div class="column" style="background-color:#f9f9f9;">
+	<fieldset>
+		<legend><b style="font-size:20px">What does this app do?</b></legend>
+		<p  align="justify";> This app web scrapes <i>Live</i> a patent and predicts how many of its claims are either product or process claims (<i>click <a href="https://en.wikipedia.org/wiki/Patent_claim">here</a> to know more about the difference between these two categories of claims</i>). The result is the percentage of the claims in patent that are product claims.
+		 A percentage of product claims of 50% means that a half of the claims in a patent are product claims and the other half are process claims. To predict 
+		 the percentage of product claims, after web scraping the patents, its text is coverted into a numeric feature vector with TF-IDF vectorization and a 
+		 Gradient Boosting Classifiers - XGBOOST - is applied to predict the claims either as product or process claims (click on About ML model if you want to know more info on how the model was trained).</p>
+    </fieldset> 
+	</div>
+</div>
+	
+	{% if result %}
+	<fieldset id = "fieldset_new">
+	<legend><b style="font-size:20px">Output values:</b></legend>
+	{% for key,value in result.items%}
+		<div><p><b>{{key}}:	<i  style="color: red;">{{value}}</i></b></p></div>
+		{% endfor %}
+	{% endif %}	
+
+
+	{% if url%}
+		<div><p><b style="color: red;">To see the patent on USPTO website click </b><a href="{{url}}">here</a></p></div>
+	{% endif %}
+		</fieldset> 
+
+
+	</fieldset>
+	{% if dictionary%}
+	<br>
+	<fieldset>
+		<legend><b style="font-size:20px">Claims and predicted labels:</b></legend>
+		{% for key,value in dictionary.items%}
+			<div><p align="justify"><b>{{ key}} </b><i  style="color: red;"> {{ value}}</i></p></div>
+			<hr>
+			{% endfor %}
+		{% endif %}
+	</fieldset>
+	<br>
+	
+	<br>
+
+	
+{% endblock %}
+

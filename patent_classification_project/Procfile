@@ -1,0 +1,2 @@
+release: python manage.py migrate
+web: gunicorn patent_classification.wsgi --log-file -
