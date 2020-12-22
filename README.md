@@ -7,5 +7,5 @@ To predict the percentage of product claims, after web scraping the patents, its
 
 The machine learning model was trained with around 400 patents with a total of around 7000 claims manually labelled from both EPO and USPTO offices. To train, validate and test the model, the data was split respectively, 50% for training, 25% for validating and 25% for testing. Only on the training data, to compesate of the imbalance classes, an oversampling method was applied. Both the TF-IDF vectorizer and the XGBOOST algorithm have been tuned using the validation data. 
 
-The original project to classify patents can be found [here](https://github.com/rcasaluce/code_final_project).
+The original project to classify patents can be found [here](https://github.com/rcasaluce/final_project).
 
